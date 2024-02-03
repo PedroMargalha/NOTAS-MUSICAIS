@@ -7,7 +7,7 @@ readme = "README.md"
 
 
 [tool.poetry.scripts]
-escalas = "notas_musicais.cli: app"
+notas-musicais = "notas_musicais.cli: app"
 
 
 [tool.poetry.dependencies]
