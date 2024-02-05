@@ -2,9 +2,9 @@
 
 # Notas musicais
 
-Notas musicais é um CLI para ajudar na formação de escalas e acordes
+Notas musicais é um CLI para ajudar na formação de escalas, acordes e campos harmonicos.
 
-Temos dois comandos disponiveis escala e acorde
+Toda a aplicação é baseada em um comando chamado `notas-musicais`. Esse comando tem um sub-comando relacionado a cada ação que a aplicação pode realizar. Como `escala`, `acorde` e `campo-harmonico`. 
 
 ## como usar?
 
@@ -82,6 +82,57 @@ poetry run notas-musicais acorde C+
 
 Até ao momento você pode usar acordes maiores, menores, diminutos e aumentados.
 
+## Campo harmonico
+Você pode chamar os campos harmonicos via o subcomando `campo-harmonico`. Por exemplo:
+
+```bash
+poetry run notas-musicais campo-harmonico
+
+┏━━━┳━━━━┳━━━━━┳━━━━┳━━━┳━━━━┳━━━━━━┓
+┃ I ┃ ii ┃ iii ┃ IV ┃ V ┃ vi ┃ viiº ┃
+┡━━━╇━━━━╇━━━━━╇━━━━╇━━━╇━━━━╇━━━━━━┩
+│ C │ Dm │ Em  │ F  │ G │ Am │ Bº   │
+└───┴────┴─────┴────┴───┴────┴──────┘
+
+```
+
+Por padrão os parâmetros utilizados são a tônica de `C` e o campo harmonico `maior`
+
+### Alterações nos campos harmonicos
+
+Você pode alterar os parâmetros da tonica e da tonalidade.
+
+```bash
+poetry run notas-musicais notas-musicais campo-harmonico [TONICA] [TONALIDADE]
+```
+
+#### Alteração na tonica do campo
+
+Um exemplo com o campo harmonico de `E`:
+
+```bash
+poetry run notas-musicais campo-harmonico E
+┏━━━┳━━━━━┳━━━━━┳━━━━┳━━━┳━━━━━┳━━━━━━┓
+┃ I ┃ ii  ┃ iii ┃ IV ┃ V ┃ vi  ┃ viiº ┃
+┡━━━╇━━━━━╇━━━━━╇━━━━╇━━━╇━━━━━╇━━━━━━┩
+│ E │ F#m │ G#m │ A  │ B │ C#m │ D#º  │
+└───┴─────┴─────┴────┴───┴─────┴──────┘
+```
+
+#### Alteração da tonalidade do campo
+
+Um exemplo utilizando o campo harmonico de `E` na tonalidade `menor`:
+
+```bash
+poetry run notas-musicais campo-harmonico E menor
+
+┏━━━━┳━━━━━┳━━━━━┳━━━━┳━━━━┳━━━━┳━━━━━┓
+┃ i  ┃ iiº ┃ III ┃ iv ┃ v  ┃ VI ┃ VII ┃
+┡━━━━╇━━━━━╇━━━━━╇━━━━╇━━━━╇━━━━╇━━━━━┩
+│ Em │ F#º │ G   │ Am │ Bm │ C  │ D   │
+└────┴─────┴─────┴────┴────┴────┴─────┘
+```
+
 ## Mais informações sobre o CLI
 
 Para descobrir outras opções, você pode usar a flag --help
@@ -91,9 +142,27 @@ poetry run notas-musicais --help
 
 Usage: escalas [OPTIONS] [TONICA] [TONALIDADE]                                                       
                                                                                                       
-╭─ Arguments ────────────────────────────────────────────────────────────────────────────────────────╮
-│   tonica          [TONICA]      Tonica da escala [default: c]                                      │
-│   tonalidade      [TONALIDADE]  Tonalidade da escala [default: maior]                              │
-╰────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ─────────────────────────────────────────────────────────────────────────────╮
+│ acorde                                                                                 │
+│ campo-harmonico                                                                        │
+│ escala                                                                                 │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+```
+### Mais informações sobre os sub-comandos
+
+As informações sobre os sub-comandos podem ser acedidas usando a flag `--help` após 
+o nome do parâmetro. Um exemplo do uso do `help` nos campos harmonicos:
+```bash
+poe poetry run notas-musicais campo-harmonico --help
+                                                                                          
+ Usage: notas-musicais campo-harmonico [OPTIONS] [TONICA] [TONALIDADE]                    
+                                                                                          
+╭─ Arguments ────────────────────────────────────────────────────────────────────────────╮
+│   tonica          [TONICA]      Tonica da escala [default: c]                          │
+│   tonalidade      [TONALIDADE]  Tonalidade da escala [default: maior]                  │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Options ──────────────────────────────────────────────────────────────────────────────╮
+│ --help          Show this message and exit.                                            │
+╰────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
