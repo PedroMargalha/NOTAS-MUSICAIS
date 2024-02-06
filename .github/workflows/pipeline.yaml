@@ -27,8 +27,8 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: actions/checkout@master
         uses: codecov/codecov-action@v4
-          with:
-            fail_ci_if_error: true # optional (default = false)
-            files: ./coverage.xml # optional
-            token: ${{ secrets.CODECOV_TOKEN }} # required
-            verbose: true # optional (default = false)
+        with:
+          fail_ci_if_error: true # optional (default = false)
+          files: ./coverage.xml # optional
+          token: ${{ secrets.CODECOV_TOKEN }} # required
+          verbose: true # optional (default = false)
