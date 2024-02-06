@@ -25,7 +25,6 @@ jobs:
         run: poetry run task test --cov-report=xml
 
       - name: Upload coverage reports to Codecov
-        uses: actions/checkout@master
         uses: codecov/codecov-action@v4
         with:
           fail_ci_if_error: true # optional (default = false)
